@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Resident Experience Co. | Event Planning Professionals</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+            
+            body {
+                font-family: 'Poppins', sans-serif;
+                scroll-behavior: smooth;
+            }
+
+            /* Animation classes */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0px); }
+            }
+
+            .animate-fade-in {
+                animation: fadeIn 1s ease-out forwards;
+            }
+
+            .animate-pulse {
+                animation: pulse 2s infinite;
+            }
+
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+
+            .delay-100 {
+                animation-delay: 100ms;
+            }
+
+            .delay-200 {
+                animation-delay: 200ms;
+            }
+
+            .delay-300 {
+                animation-delay: 300ms;
+            }
+            
+            .gradient-bg {
+                background: linear-gradient(135deg, #fce38a 0%, #f38181 50%, #6a3093 100%);
+            }
+            
+            .service-card {
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            
+            .service-card:hover {
+                transform: translateY(-10px) rotate(1deg);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+            .service-card:hover .service-icon {
+                transform: scale(1.1) rotate(5deg);
+            }
+
+            .service-icon {
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card {
+                transition: all 0.3s ease;
+            }
+            
+            .testimonial-card:hover {
+                transform: scale(1.03);
+            }
+            
+            .hamburger {
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+                transition: all 0.25s;
+                position: relative;
+            }
+            
+            .hamburger-top,
+            .hamburger-middle,
+            .hamburger-bottom {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 24px;
+                height: 2px;
+                background: #4b5563;
+                transform: rotate(0);
+                transition: all 0.5s;
+            }
+            
+            .hamburger-middle {
+                transform: translateY(7px);
+            }
+            
+            .hamburger-bottom {
+                transform: translateY(14px);
+            }
+            
+            .open .hamburger-top {
+                transform: rotate(45deg) translateY(6px) translate(6px);
+            }
+            
+            .open .hamburger-middle {
+                display: none;
+            }
+            
+            .open .hamburger-bottom {
+                transform: rotate(-45deg) translateY(6px) translate(-6px);
+            }
+            
+            .nav-mobile {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+            
+            .nav-mobile.open {
+                max-height: 500px;
+            }
+            
+            .hero-video {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero-video video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                transform: translate(-50%, -50%);
+                z-index: -2;
+                object-fit: cover;
+            }
+            
+            .hero-video::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+                z-index: -1;
+            }
+            
+            .instagram-feed {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 8px;
+            }
+            
+            @media (min-width: 768px) {
+                .instagram-feed {
+                    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                }
+            }
+            
+            /* Particle Animation Styles */
+            .particles-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                pointer-events: none;
+                z-index: 0;
+            }
+            
+            .particle {
+                position: absolute;
+                pointer-events: none;
+                opacity: 0.8;
+                font-size: 28px;
+                user-select: none;
+            }
+            
+            .emoji-balloon,
+             .emoji-cake,
+             .emoji-confetti,
+             .emoji-party,
+             .emoji-gift,
+             .emoji-sparkle {
+                 animation: simple-spin 3s linear infinite;
+             }
+
+            
+            @keyframes simple-spin {
+                0% {
+                    transform: rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: rotate(360deg);
+                    opacity: 1;
+                }
+            }
+            
+            /* Section with particles */
+            .particles-section {
+                position: relative;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-50">
+        <!-- Header/Navigation -->
+        <header class="sticky top-0 z-50 bg-white shadow-md">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <a href="#" class="text-2xl font-bold text-purple-700 flex items-center">
+                            <i class="fas fa-birthday-cake text-pink-500 mr-2"></i>
+                            <span>The Resident Experience Co.</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium">About</a>
+                        <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium">Services</a>
+                        <a href="#testimonials" class="text-gray-700 hover:text-purple-600 font-medium">Testimonials</a>
+                        <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+                    </nav>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="menu-btn" class="hamburger focus:outline-none">
+                            <span class="hamburger-top"></span>
+                            <span class="hamburger-middle"></span>
+                            <span class="hamburger-bottom"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Navigation -->
+                <div id="mobile-menu" class="nav-mobile md:hidden">
+                    <div class="pt-4 pb-2 space-y-2">
+                        <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Home</a>
+                        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">About</a>
+                        <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Services</a>
+                        <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Testimonials</a>
+                        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contact</a>
+                        <div class="px-3 py-2">
+                            <a href="#contact" class="block w-full text-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-md font-medium hover:opacity-90 transition">Book a Free Discovery Call</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-video min-h-screen flex items-center justify-center text-white">
+            <video autoplay muted loop>
+                <source src="videos/video for hero bg.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">We Create Unforgettable Experiences</h1>
+                <h2 class="text-xl md:text-2xl mb-8 animate-fade-in delay-100">From Vision to Celebration</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto animate-fade-in delay-200">Whether it's a child's birthday, a corporate retreat, or a full year of resident events—we bring the fun, planning, and professionalism so you can sit back and enjoy.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Get a Quote</a>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-purple-600 px-8 py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Plan an Event</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white scroll-animate particles-section">
+            <div class="particles-container" id="particles-about"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About The Resident Experience Co.</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Event planning team" class="rounded-lg shadow-xl w-full h-auto">
+                    </div>
+                    <div class="md:w-1/2">
+                        <p class="text-lg text-gray-700 mb-6">
+                            The Resident Experience Co. is a full-service event planning company that takes care of every detail. From birthday parties and pickleball tournaments to resident appreciation events and corporate team building—we do it all. Our goal is simple: to create memorable experiences while taking the stress off your plate.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6">
+                            We bring together entertainment, planning, and logistics in one place so you can relax and enjoy your event.
+                        </p>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-purple-800 mb-4">We specialize in working with:</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-building text-purple-600 mr-3"></i>
+                                    <span>Property Management Companies</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-home text-purple-600 mr-3"></i>
+                                    <span>HOAs and Communities</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-briefcase text-purple-600 mr-3"></i>
+                                    <span>Corporate Teams</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-purple-600 mr-3"></i>
+                                    <span>Families</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-gray-50 scroll-animate particles-section">
+            <div class="particles-container" id="particles-services"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">From intimate gatherings to large-scale events, we handle every detail with care.</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+                </div>
+                
+                <!-- Service Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Birthday Parties -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Children's birthday party with face painting and balloons" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-birthday-cake text-pink-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Birthday Parties</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Celebrate in style with our complete party planning services for kids and adults alike.</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Face painting, magicians, clowns & balloon artists</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Mermaids, princess characters & themed entertainment</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Bounce houses, outdoor games & boat rentals</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Custom cakes & complete catering</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Corporate Events -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Corporate team building and collaboration" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-briefcase text-blue-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Corporate Events</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Strengthen your team with engaging activities and seamless event execution.</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Custom team-building & ice-breaker activities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Wellness events (yoga, fitness challenges)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Holiday parties & corporate celebrations</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Full logistics & venue coordination</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resident Events -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Resident community gathering and celebration" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-home text-purple-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Resident Events</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Create vibrant communities with year-round engaging activities for residents.</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Event calendar creation & yearly scheduling</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Seasonal parties, festivals & appreciation events</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Communication templates for residents</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Vendor coordination & permit handling</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Sports Events -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Pickleball tournament and sports activities" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-table-tennis-paddle-ball text-green-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Sports Events</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Get active with our professionally organized sports clinics and tournaments - kids and adults welcome!</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Pickleball clinics & tournaments (all skill levels)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Ideal for apartment communities & corporate outings</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>All equipment provided</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Branded prizes & medals</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Entertainment -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Photo booth and entertainment setup" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-masks-theater text-yellow-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Entertainment</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Elevate your event with professional entertainers and unique experiences.</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Face painters & balloon artists</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>DJs, live music & photo booths</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Mermaids & themed characters</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Inflatables & interactive games</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Catering -->
+                    <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Professional catering buffet setup" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-red-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-utensils text-red-600 text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Food & Catering</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Delight your guests with delicious food options tailored to your event.</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Local vendor coordination</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Full-service or buffet-style</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Themed treats & food trucks</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Packages Section -->
+                <div class="mt-16">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Event Packages</h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Choose the perfect package for your needs or customize your own.</p>
+                        <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Essential Package -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:border-purple-400 transition">
+                            <div class="p-6 text-center">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Essential</h3>
+                                <p class="text-gray-600 mb-6">Perfect for small gatherings</p>
+                                <div class="text-4xl font-bold text-purple-600 mb-6">$499+</div>
+                                <ul class="space-y-3 text-gray-700 mb-8">
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Basic event planning</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>One entertainer</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Venue recommendations</span>
+                                    </li>
+                                </ul>
+                                <a href="#contact" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-3 px-4 rounded-lg transition">Get Started</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Signature Package -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-400 transform scale-105 z-10 animate-float">
+                            <div class="relative">
+                                <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Signature</h3>
+                                <p class="text-gray-600 mb-6">Our most popular package</p>
+                                <div class="text-4xl font-bold text-purple-600 mb-6">$1,299+</div>
+                                <ul class="space-y-3 text-gray-700 mb-8">
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Complete decor setup</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Catering for 50 guests</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Two entertainers</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Photography (2 hours)</span>
+                                    </li>
+                                </ul>
+                                <a href="#contact" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition">Get Started</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Elite Package -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:border-purple-400 transition">
+                            <div class="p-6 text-center">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-2">Elite</h3>
+                                <p class="text-gray-600 mb-6">The ultimate experience</p>
+                                <div class="text-4xl font-bold text-purple-600 mb-6">$2,999+</div>
+                                <ul class="space-y-3 text-gray-700 mb-8">
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Full event planning</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Multiple entertainers</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Premium catering</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>On-site coordination</span>
+                                    </li>
+                                    <li class="flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        <span>Full photography coverage</span>
+                                    </li>
+                                </ul>
+                                <a href="#contact" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-3 px-4 rounded-lg transition">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <p class="text-gray-600 mb-4">Don't see exactly what you need?</p>
+                        <a href="#contact" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition">Customize Your Package</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 bg-purple-50 scroll-animate">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">"Working with The Resident Experience Co. took all the stress out of planning our yearly resident events. Their team handled everything from permits to entertainment, and our residents loved every event!"</p>
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-user-tie text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
+                                <p class="text-gray-600 text-sm">Property Manager, Oakwood Apartments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">"Our daughter's mermaid birthday party was absolutely magical! The Resident Experience Co. thought of every detail - from the perfect decorations to the amazing entertainers. We didn't have to lift a finger."</p>
+                        <div class="flex items-center">
+                            <div class="bg-pink-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-user text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Michael & Lisa Chen</h4>
+                                <p class="text-gray-600 text-sm">Happy Parents</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic mb-6">"The pickleball tournament they organized for our corporate retreat was the highlight of the year! Perfectly organized, great equipment, and so much fun. We'll definitely be using them for all our future events."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-briefcase text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">David Rodriguez</h4>
+                                <p class="text-gray-600 text-sm">HR Director, TechForward Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Client Logos -->
+                <div class="mt-16">
+                    <h3 class="text-center text-xl font-semibold text-gray-700 mb-8">Trusted by leading organizations</h3>
+                    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <i class="fas fa-building text-4xl text-gray-700"></i>
+                            <p class="text-center mt-2 font-medium">Summit Properties</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <i class="fas fa-home text-4xl text-gray-700"></i>
+                            <p class="text-center mt-2 font-medium">Pine Grove HOA</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <i class="fas fa-city text-4xl text-gray-700"></i>
+                            <p class="text-center mt-2 font-medium">Urban Living</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <i class="fas fa-laptop-code text-4xl text-gray-700"></i>
+                            <p class="text-center mt-2 font-medium">Digital Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Let's Create Something Amazing</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ready to plan your next event? Get in touch with us today!</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <!-- Contact Form -->
+                    <div class="lg:w-1/2">
+                        <form id="contactForm" class="bg-gray-50 p-8 rounded-lg shadow-md">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="event-type" class="block text-gray-700 font-medium mb-2">Event Type</label>
+                                <select id="event-type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <option value="">Select an option</option>
+                                    <option value="birthday">Birthday Party</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="resident">Resident Event</option>
+                                    <option value="sports">Sports Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Tell Us About Your Event</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="lg:w-1/2">
+                        <div class="bg-purple-50 p-8 rounded-lg shadow-md h-full">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-envelope text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Email Us</h4>
+                                        <a href="mailto:info@residentexperience.com" class="text-purple-600 hover:underline">info@residentexperience.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-phone-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Call Us</h4>
+                                        <a href="tel:+18005551234" class="text-purple-600 hover:underline">(800) 555-1234</a>
+                                        <p class="text-gray-600 text-sm mt-1">Mon-Fri, 9am-5pm EST</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-calendar-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Schedule a Call</h4>
+                                        <p class="text-gray-700 mb-3">Book a free 15-minute discovery call to discuss your event needs.</p>
+                                        <a href="#" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition">Book Now</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-map-marker-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-1">Our Office</h4>
+                                        <p class="text-gray-700">123 Event Planning Lane<br>Orlando, FL 32801</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h4 class="font-bold text-gray-800 mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="bg-white p-3 rounded-full shadow-sm text-purple-600 hover:bg-purple-100 transition">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="bg-white p-3 rounded-full shadow-sm text-purple-600 hover:bg-purple-100 transition">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="bg-white p-3 rounded-full shadow-sm text-purple-600 hover:bg-purple-100 transition">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="bg-white p-3 rounded-full shadow-sm text-purple-600 hover:bg-purple-100 transition">
+                                        <i class="fab fa-pinterest-p"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram Feed -->
+        <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">#ResidentExperience</h2>
+                    <p class="text-gray-600">Follow us on Instagram for event inspiration</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="instagram-feed">
+                    <!-- Placeholder Instagram posts -->
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instagram post" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Birthday party celebration" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instagram post" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Corporate team event" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Party entertainment and fun" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Event catering and dining" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <a href="#" class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition">
+                        <i class="fab fa-instagram mr-2"></i> Follow Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4">Get Event Planning Tips & Special Offers</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Sign up for our newsletter to receive event inspiration, planning advice, and exclusive discounts.</p>
+                
+                <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                    <button type="submit" class="bg-white text-purple-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition">Subscribe</button>
+                </form>
+                
+                <p class="text-sm mt-4 opacity-80">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-birthday-cake text-pink-500 mr-2"></i>
+                            <span>The Resident Experience Co.</span>
+                        </h3>
+                        <p class="text-gray-400 mb-4">Your Event. Fully Handled.</p>
+                        <p class="text-gray-400">Creating unforgettable experiences since 2015.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Birthday Parties</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Corporate Events</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Resident Events</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Sports Events</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Entertainment</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Contact</h4>
+                        <address class="not-italic text-gray-400 space-y-2">
+                            <p>123 Event Planning Lane<br>Orlando, FL 32801</p>
+                            <p>Phone: <a href="tel:+18005551234" class="hover:text-white transition">(800) 555-1234</a></p>
+                            <p>Email: <a href="mailto:info@residentexperience.com" class="hover:text-white transition">info@residentexperience.com</a></p>
+                        </address>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 The Resident Experience Co. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="fixed bottom-6 right-6 bg-purple-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-purple-700">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <script>
+            // Scroll animation setup
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.scroll-animate');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                animateOnScroll();
+                
+                // Mobile menu toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                menuBtn.classList.toggle('open');
+                mobileMenu.classList.toggle('open');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuBtn.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                });
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const eventType = document.getElementById('event-type').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send this data to a server
+                console.log({ name, email, phone, eventType, message });
+                
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            
+            // Particle Animation System
+            class ParticleSystem {
+                constructor(containerId) {
+                     this.container = document.getElementById(containerId);
+                     this.particles = [];
+                     this.particleTypes = [
+                         { emoji: '🎈', class: 'emoji-balloon' },
+                         { emoji: '🎂', class: 'emoji-cake' },
+                         { emoji: '🎉', class: 'emoji-confetti' },
+                         { emoji: '🥳', class: 'emoji-party' },
+                         { emoji: '🎁', class: 'emoji-gift' },
+                         { emoji: '✨', class: 'emoji-sparkle' },
+                         { emoji: '🎊', class: 'emoji-confetti' },
+                         { emoji: '🍰', class: 'emoji-cake' },
+                         { emoji: '🎪', class: 'emoji-party' },
+                         { emoji: '🎭', class: 'emoji-party' }
+                     ];
+                     this.isActive = false;
+                     this.animationId = null;
+                 }
+                
+                createParticle() {
+                    const particle = document.createElement('div');
+                    const type = this.particleTypes[Math.floor(Math.random() * this.particleTypes.length)];
+                    
+                    particle.className = `particle ${type.class}`;
+                    particle.textContent = type.emoji;
+                    
+                    // Random positioning across entire section area
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    particle.style.animationDuration = (2 + Math.random() * 3) + 's';
+                    
+                    this.container.appendChild(particle);
+                    this.particles.push(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                            this.particles = this.particles.filter(p => p !== particle);
+                        }
+                    }, 5000);
+                }
+                
+                start() {
+                    if (this.isActive) return;
+                    this.isActive = true;
+                    
+                    const createParticles = () => {
+                         if (this.isActive) {
+                             // Create 3-6 particles at random intervals
+                             const particleCount = Math.floor(Math.random() * 4) + 3;
+                             for (let i = 0; i < particleCount; i++) {
+                                 setTimeout(() => this.createParticle(), i * 150);
+                             }
+                             
+                             // Schedule next batch more frequently
+                             this.animationId = setTimeout(createParticles, 800 + Math.random() * 1200);
+                         }
+                     };
+                    
+                    createParticles();
+                }
+                
+                stop() {
+                    this.isActive = false;
+                    if (this.animationId) {
+                        clearTimeout(this.animationId);
+                        this.animationId = null;
+                    }
+                }
+                
+                clear() {
+                    this.particles.forEach(particle => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    });
+                    this.particles = [];
+                }
+            }
+            
+            // Initialize particle systems
+            let aboutParticles, servicesParticles;
+            
+            // Intersection Observer for particle activation
+            const particleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const sectionId = entry.target.id;
+                    
+                    if (entry.isIntersecting) {
+                        // Start particles when section is visible
+                        if (sectionId === 'about' && aboutParticles) {
+                            aboutParticles.start();
+                        } else if (sectionId === 'services' && servicesParticles) {
+                            servicesParticles.start();
+                        }
+                    } else {
+                        // Stop particles when section is not visible
+                        if (sectionId === 'about' && aboutParticles) {
+                            aboutParticles.stop();
+                        } else if (sectionId === 'services' && servicesParticles) {
+                            servicesParticles.stop();
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '50px'
+            });
+            
+            // Initialize particle systems after DOM is loaded
+            setTimeout(() => {
+                aboutParticles = new ParticleSystem('particles-about');
+                servicesParticles = new ParticleSystem('particles-services');
+                
+                // Observe sections for particle activation
+                const aboutSection = document.getElementById('about');
+                const servicesSection = document.getElementById('services');
+                
+                if (aboutSection) particleObserver.observe(aboutSection);
+                if (servicesSection) particleObserver.observe(servicesSection);
+            }, 100);
+            
+            }); // Close DOMContentLoaded event listener
+        </script>
+    </body>
+</html>
