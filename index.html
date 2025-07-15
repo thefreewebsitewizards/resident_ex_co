@@ -181,52 +181,78 @@
                 }
             }
             
-            /* Particle Animation Styles */
-            .particles-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                pointer-events: none;
-                z-index: 0;
+            /* Particle Background Animations */
+            @keyframes popUp1 {
+                0% { opacity: 0; transform: scale(0) translateY(20px); }
+                50% { opacity: 1; transform: scale(1.2) translateY(-10px); }
+                100% { opacity: 0; transform: scale(0) translateY(20px); }
+            }
+            
+            @keyframes popUp2 {
+                0% { opacity: 0; transform: scale(0) translateY(30px); }
+                30% { opacity: 0.8; transform: scale(1.1) translateY(-5px); }
+                70% { opacity: 1; transform: scale(1.3) translateY(-15px); }
+                100% { opacity: 0; transform: scale(0) translateY(30px); }
+            }
+            
+            @keyframes popUp3 {
+                0% { opacity: 0; transform: scale(0) translateY(25px); }
+                40% { opacity: 1; transform: scale(1.4) translateY(-20px); }
+                80% { opacity: 0.7; transform: scale(1.1) translateY(-5px); }
+                100% { opacity: 0; transform: scale(0) translateY(25px); }
+            }
+            
+            @keyframes popUp4 {
+                0% { opacity: 0; transform: scale(0) translateY(15px); }
+                25% { opacity: 0.6; transform: scale(0.8) translateY(0px); }
+                60% { opacity: 1; transform: scale(1.5) translateY(-25px); }
+                100% { opacity: 0; transform: scale(0) translateY(15px); }
+            }
+            
+            @keyframes popUp5 {
+                0% { opacity: 0; transform: scale(0) translateY(35px); }
+                35% { opacity: 0.9; transform: scale(1.2) translateY(-8px); }
+                65% { opacity: 1; transform: scale(1.6) translateY(-30px); }
+                100% { opacity: 0; transform: scale(0) translateY(35px); }
             }
             
             .particle {
                 position: absolute;
+                font-size: 1.5rem;
                 pointer-events: none;
-                opacity: 0.8;
-                font-size: 28px;
-                user-select: none;
+                z-index: 1;
             }
             
-            .emoji-balloon,
-             .emoji-cake,
-             .emoji-confetti,
-             .emoji-party,
-             .emoji-gift,
-             .emoji-sparkle {
-                 animation: simple-spin 3s linear infinite;
-             }
+            .particle-pop1 {
+                animation: popUp1 3s ease-in-out infinite;
+            }
+            
+            .particle-pop2 {
+                animation: popUp2 3.5s ease-in-out infinite;
+            }
+            
+            .particle-pop3 {
+                animation: popUp3 4s ease-in-out infinite;
+            }
+            
+            .particle-pop4 {
+                animation: popUp4 2.8s ease-in-out infinite;
+            }
+            
+            .particle-pop5 {
+                animation: popUp5 4.2s ease-in-out infinite;
+            }
+            
+            .particle-delay-1 { animation-delay: 0.5s; }
+            .particle-delay-2 { animation-delay: 1s; }
+            .particle-delay-3 { animation-delay: 1.5s; }
+            .particle-delay-4 { animation-delay: 2s; }
+            .particle-delay-5 { animation-delay: 2.5s; }
+            .particle-delay-6 { animation-delay: 3s; }
+            .particle-delay-7 { animation-delay: 3.5s; }
+            .particle-delay-8 { animation-delay: 4s; }
+            
 
-            
-            @keyframes simple-spin {
-                0% {
-                    transform: rotate(0deg);
-                    opacity: 1;
-                }
-                100% {
-                    transform: rotate(360deg);
-                    opacity: 1;
-                }
-            }
-            
-            /* Section with particles */
-            .particles-section {
-                position: relative;
-                overflow: hidden;
-            }
         </style>
     </head>
     <body class="bg-gray-50">
@@ -338,8 +364,24 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-16 bg-white scroll-animate particles-section">
-            <div class="particles-container" id="particles-about"></div>
+        <section id="about" class="py-16 bg-white scroll-animate relative overflow-hidden">
+            <!-- Particle Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Party Emoji Particles - Spread across section -->
+                <div class="particle particle-pop1 particle-delay-1" style="top: 15%; left: 8%;">🎉</div>
+                <div class="particle particle-pop2 particle-delay-3" style="top: 25%; left: 35%;">🎂</div>
+                <div class="particle particle-pop3 particle-delay-5" style="top: 40%; left: 15%;">🎈</div>
+                <div class="particle particle-pop4 particle-delay-2" style="top: 55%; left: 60%;">🎊</div>
+                <div class="particle particle-pop5 particle-delay-4" style="top: 70%; left: 25%;">🎁</div>
+                <div class="particle particle-pop1 particle-delay-6" style="top: 20%; left: 75%;">🎵</div>
+                <div class="particle particle-pop2 particle-delay-1" style="top: 35%; left: 85%;">🎭</div>
+                <div class="particle particle-pop3 particle-delay-7" style="top: 50%; left: 45%;">🎪</div>
+                <div class="particle particle-pop4 particle-delay-3" style="top: 65%; left: 80%;">✨</div>
+                <div class="particle particle-pop5 particle-delay-5" style="top: 30%; left: 50%;">🎀</div>
+                <div class="particle particle-pop1 particle-delay-2" style="top: 45%; left: 5%;">🎶</div>
+                <div class="particle particle-pop2 particle-delay-4" style="top: 10%; left: 65%;">🌟</div>
+                <div class="particle particle-pop3 particle-delay-6" style="top: 60%; left: 40%;">🎯</div>
+            </div>
             <div class="container mx-auto px-4 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About The Resident Experience Co.</h2>
@@ -385,8 +427,23 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-16 bg-gray-50 scroll-animate particles-section">
-            <div class="particles-container" id="particles-services"></div>
+        <section id="services" class="py-16 bg-gray-50 scroll-animate relative overflow-hidden">
+            <!-- Particle Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Party Emoji Particles - Spread across section -->
+                <div class="particle particle-pop1 particle-delay-1" style="top: 10%; left: 5%;">🎪</div>
+                <div class="particle particle-pop2 particle-delay-3" style="top: 20%; left: 30%;">🎭</div>
+                <div class="particle particle-pop3 particle-delay-5" style="top: 35%; left: 12%;">🎨</div>
+                <div class="particle particle-pop4 particle-delay-2" style="top: 50%; left: 65%;">🎯</div>
+                <div class="particle particle-pop5 particle-delay-4" style="top: 65%; left: 20%;">🎪</div>
+                <div class="particle particle-pop1 particle-delay-6" style="top: 15%; left: 80%;">🎭</div>
+                <div class="particle particle-pop2 particle-delay-1" style="top: 40%; left: 85%;">🎨</div>
+                <div class="particle particle-pop3 particle-delay-7" style="top: 55%; left: 45%;">🎯</div>
+                <div class="particle particle-pop4 particle-delay-3" style="top: 70%; left: 75%;">🎪</div>
+                <div class="particle particle-pop5 particle-delay-5" style="top: 25%; left: 55%;">🎭</div>
+                <div class="particle particle-pop1 particle-delay-2" style="top: 45%; left: 8%;">🎨</div>
+                <div class="particle particle-pop2 particle-delay-4" style="top: 8%; left: 60%;">🎯</div>
+            </div>
             <div class="container mx-auto px-4 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
@@ -703,8 +760,24 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 bg-purple-50 scroll-animate">
-            <div class="container mx-auto px-4">
+        <section id="testimonials" class="py-16 bg-purple-50 scroll-animate relative overflow-hidden">
+            <!-- Particle Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Party Emoji Particles - Spread across section -->
+                <div class="particle particle-pop1 particle-delay-1" style="top: 12%; left: 8%;">⭐</div>
+                <div class="particle particle-pop2 particle-delay-3" style="top: 25%; left: 35%;">💬</div>
+                <div class="particle particle-pop3 particle-delay-5" style="top: 40%; left: 15%;">👏</div>
+                <div class="particle particle-pop4 particle-delay-2" style="top: 55%; left: 70%;">❤️</div>
+                <div class="particle particle-pop5 particle-delay-4" style="top: 70%; left: 25%;">⭐</div>
+                <div class="particle particle-pop1 particle-delay-6" style="top: 18%; left: 78%;">💬</div>
+                <div class="particle particle-pop2 particle-delay-1" style="top: 35%; left: 88%;">👏</div>
+                <div class="particle particle-pop3 particle-delay-7" style="top: 50%; left: 50%;">❤️</div>
+                <div class="particle particle-pop4 particle-delay-3" style="top: 65%; left: 82%;">⭐</div>
+                <div class="particle particle-pop5 particle-delay-5" style="top: 30%; left: 58%;">💬</div>
+                <div class="particle particle-pop1 particle-delay-2" style="top: 45%; left: 5%;">👏</div>
+                <div class="particle particle-pop2 particle-delay-4" style="top: 10%; left: 62%;">❤️</div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
                     <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
@@ -873,8 +946,24 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 bg-white">
-            <div class="container mx-auto px-4">
+        <section id="contact" class="py-16 bg-white relative overflow-hidden">
+            <!-- Particle Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Party Emoji Particles - Spread across section -->
+                <div class="particle particle-pop1 particle-delay-1" style="top: 15%; left: 10%;">✨</div>
+                <div class="particle particle-pop2 particle-delay-3" style="top: 25%; left: 40%;">🌟</div>
+                <div class="particle particle-pop3 particle-delay-5" style="top: 40%; left: 18%;">💫</div>
+                <div class="particle particle-pop4 particle-delay-2" style="top: 55%; left: 75%;">⚡</div>
+                <div class="particle particle-pop5 particle-delay-4" style="top: 70%; left: 30%;">✨</div>
+                <div class="particle particle-pop1 particle-delay-6" style="top: 20%; left: 85%;">🌟</div>
+                <div class="particle particle-pop2 particle-delay-1" style="top: 35%; left: 90%;">💫</div>
+                <div class="particle particle-pop3 particle-delay-7" style="top: 50%; left: 55%;">⚡</div>
+                <div class="particle particle-pop4 particle-delay-3" style="top: 65%; left: 80%;">✨</div>
+                <div class="particle particle-pop5 particle-delay-5" style="top: 30%; left: 65%;">🌟</div>
+                <div class="particle particle-pop1 particle-delay-2" style="top: 45%; left: 5%;">💫</div>
+                <div class="particle particle-pop2 particle-delay-4" style="top: 10%; left: 70%;">⚡</div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Let's Create Something Amazing</h2>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ready to plan your next event? Get in touch with us today!</p>
@@ -1161,131 +1250,7 @@
             });
             
             
-            // Particle Animation System
-            class ParticleSystem {
-                constructor(containerId) {
-                     this.container = document.getElementById(containerId);
-                     this.particles = [];
-                     this.particleTypes = [
-                         { emoji: '🎈', class: 'emoji-balloon' },
-                         { emoji: '🎂', class: 'emoji-cake' },
-                         { emoji: '🎉', class: 'emoji-confetti' },
-                         { emoji: '🥳', class: 'emoji-party' },
-                         { emoji: '🎁', class: 'emoji-gift' },
-                         { emoji: '✨', class: 'emoji-sparkle' },
-                         { emoji: '🎊', class: 'emoji-confetti' },
-                         { emoji: '🍰', class: 'emoji-cake' },
-                         { emoji: '🎪', class: 'emoji-party' },
-                         { emoji: '🎭', class: 'emoji-party' }
-                     ];
-                     this.isActive = false;
-                     this.animationId = null;
-                 }
-                
-                createParticle() {
-                    const particle = document.createElement('div');
-                    const type = this.particleTypes[Math.floor(Math.random() * this.particleTypes.length)];
-                    
-                    particle.className = `particle ${type.class}`;
-                    particle.textContent = type.emoji;
-                    
-                    // Random positioning across entire section area
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 2 + 's';
-                    particle.style.animationDuration = (2 + Math.random() * 3) + 's';
-                    
-                    this.container.appendChild(particle);
-                    this.particles.push(particle);
-                    
-                    // Remove particle after animation
-                    setTimeout(() => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                            this.particles = this.particles.filter(p => p !== particle);
-                        }
-                    }, 5000);
-                }
-                
-                start() {
-                    if (this.isActive) return;
-                    this.isActive = true;
-                    
-                    const createParticles = () => {
-                         if (this.isActive) {
-                             // Create 3-6 particles at random intervals
-                             const particleCount = Math.floor(Math.random() * 4) + 3;
-                             for (let i = 0; i < particleCount; i++) {
-                                 setTimeout(() => this.createParticle(), i * 150);
-                             }
-                             
-                             // Schedule next batch more frequently
-                             this.animationId = setTimeout(createParticles, 800 + Math.random() * 1200);
-                         }
-                     };
-                    
-                    createParticles();
-                }
-                
-                stop() {
-                    this.isActive = false;
-                    if (this.animationId) {
-                        clearTimeout(this.animationId);
-                        this.animationId = null;
-                    }
-                }
-                
-                clear() {
-                    this.particles.forEach(particle => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                        }
-                    });
-                    this.particles = [];
-                }
-            }
-            
-            // Initialize particle systems
-            let aboutParticles, servicesParticles;
-            
-            // Intersection Observer for particle activation
-            const particleObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const sectionId = entry.target.id;
-                    
-                    if (entry.isIntersecting) {
-                        // Start particles when section is visible
-                        if (sectionId === 'about' && aboutParticles) {
-                            aboutParticles.start();
-                        } else if (sectionId === 'services' && servicesParticles) {
-                            servicesParticles.start();
-                        }
-                    } else {
-                        // Stop particles when section is not visible
-                        if (sectionId === 'about' && aboutParticles) {
-                            aboutParticles.stop();
-                        } else if (sectionId === 'services' && servicesParticles) {
-                            servicesParticles.stop();
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.2,
-                rootMargin: '50px'
-            });
-            
-            // Initialize particle systems after DOM is loaded
-            setTimeout(() => {
-                aboutParticles = new ParticleSystem('particles-about');
-                servicesParticles = new ParticleSystem('particles-services');
-                
-                // Observe sections for particle activation
-                const aboutSection = document.getElementById('about');
-                const servicesSection = document.getElementById('services');
-                
-                if (aboutSection) particleObserver.observe(aboutSection);
-                if (servicesSection) particleObserver.observe(servicesSection);
-            }, 100);
+
             
             // Loading Screen Control
             const loadingScreen = document.getElementById('loadingScreen');
