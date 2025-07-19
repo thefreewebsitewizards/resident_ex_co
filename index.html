@@ -311,16 +311,17 @@
                     </div>
                     
                     <!-- Desktop Navigation -->
-                    <nav class="hidden md:flex space-x-8">
+                    <nav class="hidden lg:flex space-x-8">
                         <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium">Home</a>
                         <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium">About</a>
                         <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium">Services</a>
+                        <a href="#featured-events" class="text-gray-700 hover:text-purple-600 font-medium">Featured Events</a>
                         <a href="#testimonials" class="text-gray-700 hover:text-purple-600 font-medium">Testimonials</a>
                         <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium">Contact</a>
                     </nav>
                     
                     <!-- Mobile menu button -->
-                    <div class="md:hidden">
+                    <div class="lg:hidden">
                         <button id="menu-btn" class="hamburger focus:outline-none">
                             <span class="hamburger-top"></span>
                             <span class="hamburger-middle"></span>
@@ -330,11 +331,12 @@
                 </div>
                 
                 <!-- Mobile Navigation -->
-                <div id="mobile-menu" class="nav-mobile md:hidden">
+                <div id="mobile-menu" class="nav-mobile lg:hidden">
                     <div class="pt-4 pb-2 space-y-2">
                         <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Home</a>
                         <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">About</a>
                         <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Services</a>
+                        <a href="#featured-events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Featured Events</a>
                         <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Testimonials</a>
                         <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contact</a>
                         <div class="px-3 py-2">
@@ -346,19 +348,19 @@
         </header>
 
         <!-- Hero Section -->
-        <section id="home" class="hero-video min-h-screen flex items-center justify-center text-white">
+        <section id="home" class="hero-video h-screen flex items-center justify-center text-white">
             <video autoplay muted loop playsinline preload="auto">
                 <source src="/videos/hero.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">We Create Unforgettable Experiences</h1>
-                <h2 class="text-xl md:text-2xl mb-8 animate-fade-in delay-100">From Vision to Celebration</h2>
-                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto animate-fade-in delay-200">Whether it's a child's birthday, a corporate retreat, or a full year of resident events—we bring the fun, planning, and professionalism so you can sit back and enjoy.</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Get a Quote</a>
-                    <a href="#services" class="bg-white hover:bg-gray-100 text-purple-600 px-8 py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Plan an Event</a>
-                    <a href="#contact" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Free Discovery Call</a>
+            <div class="container mx-auto px-4 text-center pt-20">
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in">We Create Unforgettable Experiences</h1>
+                <h2 class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 animate-fade-in delay-100">From Vision to Celebration</h2>
+                <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto animate-fade-in delay-200">Whether it's a child's birthday, a corporate retreat, or a full year of resident events—we bring the fun, planning, and professionalism so you can sit back and enjoy.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Get a Quote</a>
+                    <a href="#services" class="bg-white hover:bg-gray-100 text-purple-600 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Plan an Event</a>
+                    <a href="#contact" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-base sm:text-lg transition-all hover:scale-105 shadow-lg hover:shadow-xl">Free Discovery Call</a>
                 </div>
             </div>
         </section>
@@ -760,6 +762,119 @@
             </div>
         </section>
 
+        <!-- Featured Events Section -->
+        <section id="featured-events" class="py-16 bg-white scroll-animate relative overflow-hidden">
+            <!-- Particle Background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="particle particle-pop1 particle-delay-1" style="top: 15%; left: 8%;">🏆</div>
+                <div class="particle particle-pop2 particle-delay-3 hidden md:block" style="top: 25%; left: 20%;">🎾</div>
+                <div class="particle particle-pop3 particle-delay-5" style="top: 40%; left: 15%;">🏅</div>
+                <div class="particle particle-pop4 particle-delay-2" style="top: 55%; left: 85%;">🎯</div>
+                <div class="particle particle-pop5 particle-delay-4 hidden md:block" style="top: 70%; left: 25%;">⭐</div>
+                <div class="particle particle-pop1 particle-delay-6" style="top: 20%; left: 88%;">🏆</div>
+                <div class="particle particle-pop2 particle-delay-1" style="top: 35%; left: 92%;">🎾</div>
+                <div class="particle particle-pop3 particle-delay-7 hidden md:block" style="top: 10%; left: 35%;">🏅</div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Event Spotlight</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Celebrating our recent pickleball tournament success and community partnerships</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+                </div>
+                
+                <!-- Pickleball Tournament Showcase -->
+                <div class="mb-8 md:mb-16">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">🏆 Recent Pickleball Tournament</h3>
+                        <p class="text-lg text-gray-600">A fantastic day of competition, community, and fun for all skill levels!</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <!-- Combined Tournament Photos and Sponsor Content -->
+                        <div class="rounded-3xl bg-white overflow-hidden max-w-6xl mx-auto">
+                            <div class="flex flex-col lg:flex-row">
+                                <!-- Left Side: Photos and Highlights -->
+                                <div class="flex-1 flex flex-col">
+                                    <!-- Photos -->
+                                    <div class="flex flex-col md:flex-row">
+                                        <div class="flex-1">
+                                            <img src="images/pickleball.png" alt="Pickleball tournament action shot" class="w-full h-[28rem] object-cover">
+                                        </div>
+                                        <div class="flex-1">
+                                            <img src="images/pickleball (2).png" alt="Pickleball tournament celebration" class="w-full h-[28rem] object-cover rounded-tr-3xl">
+                                        </div>
+                                    </div>
+                                    <!-- Tournament Highlights -->
+                                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-8 h-66 flex items-center rounded-b-3xl">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center w-full">
+                                            <div class="flex flex-col items-center justify-center h-42">
+                                                <div class="bg-green-100 p-4 rounded-full mb-4">
+                                                    <i class="fas fa-users text-green-600 text-2xl"></i>
+                                                </div>
+                                                <h4 class="text-xl font-bold text-gray-800 mb-2">50+ Participants</h4>
+                                                <p class="text-gray-600">Amazing turnout from the community</p>
+                                            </div>
+                                            <div class="flex flex-col items-center justify-center h-42">
+                                                <div class="bg-blue-100 p-4 rounded-full mb-4">
+                                                    <i class="fas fa-trophy text-blue-600 text-2xl"></i>
+                                                </div>
+                                                <h4 class="text-xl font-bold text-gray-800 mb-2">Multiple Divisions</h4>
+                                                <p class="text-gray-600">Beginner to advanced skill levels</p>
+                                            </div>
+                                            <div class="flex flex-col items-center justify-center h-42">
+                                                <div class="bg-purple-100 p-4 rounded-full mb-4">
+                                                    <i class="fas fa-heart text-purple-600 text-2xl"></i>
+                                                </div>
+                                                <h4 class="text-xl font-bold text-gray-800 mb-2">Community Spirit</h4>
+                                                <p class="text-gray-600">Building connections through sport</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Right Side: Sponsor Content -->
+                                <div class="flex-1 p-8 flex flex-col justify-center min-h-[36rem]">
+                                    <div class="text-center">
+                                        <div class="flex items-center justify-center mb-6 px-2">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-400 p-1 rounded-full mr-2 sm:mr-3 flex-shrink-0">
+                                <div class="bg-white p-1 sm:p-2 rounded-full">
+                                    <span class="text-lg sm:text-2xl">🤝</span>
+                                </div>
+                            </div>
+                            <h3 class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent whitespace-nowrap">Proudly Sponsored By</h3>
+                        </div>
+                                        
+                                        <!-- Logo -->
+                                        <img src="images/pickleball-sponsor.png" alt="Tournament Sponsor Logo" class="w-full h-40 object-cover mb-8 lg:mb-16">
+                                        
+                                        <!-- Enhanced Quote Section -->
+                                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200 shadow-md mt-8 lg:mt-32">
+                                            <div class="flex items-center justify-center mb-4">
+                                                <div class="bg-purple-100 p-3 rounded-full">
+                                                    <i class="fas fa-heart text-purple-600 text-xl"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-700 mb-4 italic leading-relaxed">
+                                                "We're grateful for the partnership and support that makes events like these possible. Together, we're building stronger communities through sports and recreation."
+                                            </p>
+                                            <div class="flex items-center justify-center">
+                                                <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full">
+                                                    <p class="font-semibold text-sm">- The Resident Experience Co. Team</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+
+            </div>
+        </section>
+
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-16 bg-purple-50 scroll-animate relative overflow-hidden">
             <!-- Particle Background -->
@@ -994,7 +1109,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-gray-800 mb-1">Call Us</h4>
-                                        <a href="tel:+18005551234" class="text-purple-600 hover:underline">(800) 555-1234</a>
+                                        <a href="tel:+19414675157" class="text-purple-600 hover:underline">(941) 467-5157</a>
                                         <p class="text-gray-600 text-sm mt-1">Mon-Fri, 9am-5pm EST</p>
                                     </div>
                                 </div>
@@ -1117,7 +1232,7 @@
                         <h4 class="text-lg font-bold mb-4">Contact</h4>
                         <address class="not-italic text-gray-400 space-y-2">
                             <p>123 Event Planning Lane<br>Orlando, FL 32801</p>
-                            <p>Phone: <a href="tel:+18005551234" class="hover:text-white transition">(800) 555-1234</a></p>
+                            <p>Phone: <a href="tel:+19414675157" class="hover:text-white transition">(941) 467-5157</a></p>
                             <p>Email: <a href="mailto:info@residentexperience.com" class="hover:text-white transition">info@residentexperience.com</a></p>
                         </address>
                     </div>
